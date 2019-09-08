@@ -4,28 +4,6 @@
 const { ApolloServer, gql } = require('apollo-server');
 const uuid = require('uuid/v4');
 
-// const typeDefs = gql`
-//   type Quote {
-//     id: ID!
-//     phrase: String!
-//     quotee: String
-//   }
-
-//   type Query {
-//     quotes: [Quote]
-//   }
-
-//   type Mutation {
-//     addQuote(phrase: String!, quotee: String): Quote
-//     editQuote(id: ID!, phrase: String, quotee: String): Quote
-//     deleteQuote(id: ID!): DeleteResponse
-//   }
-
-//   type DeleteResponse {
-//     ok: Boolean!
-//   }
-// `;
-
 const schema = gql`
   enum SpiritType {
     GIN
@@ -48,7 +26,14 @@ const schema = gql`
 
   type Mutation {
     addSpirit(name: String!, type: SpiritType!): Spirit
+    editSpirit(id: ID!, name: String!, type: SpiritType!): Spirit
+    deleteSpirit(id: ID!): DeleteResponse
   }
+
+  type DeleteResponse {
+    ok: Boolean!
+  }
+    
 `;
 
 const spirits = {};
@@ -72,25 +57,25 @@ const resolvers = {
     addSpirit: async (parent, spirit) => {
       return addSpirit(spirit);
     },
-  //   editQuote: async (parent, { id, ...spirit }) => {
-  //     if (!spirits[id]) {
-  //       throw new Error("Quote doesn't exist");
-  //     }
-  //     // I don't understand why I can't just
-  //     // edit the quote at the index 'id'?
-  //     spirits[id] = {
-  //       ...spirits[id],
-  //       ...spirit,
-  //     };
+    editSpirit: async (parent, { id, ...spirit }) => {
+      if (!spirits[id]) {
+        throw new Error("Spirit doesn't exist");
+      }
+      // I don't understand why I can't just
+      // edit the spirit at the index 'id'?
+      spirits[id] = {
+        ...spirits[id],
+        ...spirit,
+      };
 
-  //     return spirits[id];
-  //   },
-  //   deleteQuote: async (parent, { id }) => {
-  //     const ok = Boolean(spirits[id]);
-  //     delete spirits[id];
+      return spirits[id];
+    },
+    deleteSpirit: async (parent, { id }) => {
+      const ok = Boolean(spirits[id]);
+      delete spirits[id];
 
-  //     return { ok };
-  //   },
+      return { ok };
+    },
   },
 };
 
