@@ -4,7 +4,7 @@
 const { ApolloServer, gql } = require('apollo-server');
 const uuid = require('uuid/v4');
 
-// this _must_ be called 'typeDefs' or the call to instanciate the
+// this _must_ be called 'typeDefs' or the call to instaniate the
 // ApolloServer errors out - wha?
 const typeDefs = gql`
   type Quote {
@@ -38,8 +38,8 @@ const addQuote = quote => {
 
 // initial quotes
 addQuote({ phrase: "I'm a leaf on the wind.  Watch how I soar", quotee: "Wash"});
-addQuote({ phrase: "We're all stories in the end.",             quotee: "The Doctor"});
-addQuote({ phrase: "Woah!",                                     quotee: "Neo"});
+addQuote({ phrase: "We're all stories in the end.", quotee: "The Doctor"});
+addQuote({ phrase: "Woah!", quotee: "Neo"});
 
 const resolvers = {
   Query: {
