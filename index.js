@@ -33,6 +33,7 @@ const schema = gql`
     RUM
     LIQUOR
     TEQUILA
+    BOURBON
   }
 
   type Spirit {
@@ -44,9 +45,15 @@ const schema = gql`
   type Query {
     spirits: [Spirit]
   }
+
+  type Mutation {
+    addSpirit(name: String!, type: SpiritType!): Spirit
+  }
 `;
 
 const spirits = {};
+
+// TODO: add unique name check
 const addSpirit = spirit => {
   const id = uuid();
   return spirits[id] = { ...spirit, id };
@@ -55,16 +62,16 @@ const addSpirit = spirit => {
 // initial spirits
 addSpirit({ name: "Hendrik's Gin", type: "GIN" });
 addSpirit({ name: "Havana Club", type: "RUM" });
-addSpirit({ name: "Eldorado 5yr", type: "RUM" });
+addSpirit({ name: "Woodford Reserve", type: "BOURBON" });
 
 const resolvers = {
   Query: {
     spirits: () => Object.values(spirits),
   },
-  // Mutation: {
-  //   addSpirit: async (parent, spirit) => {
-  //     return addSpirit(spirit);
-  //   },
+  Mutation: {
+    addSpirit: async (parent, spirit) => {
+      return addSpirit(spirit);
+    },
   //   editQuote: async (parent, { id, ...spirit }) => {
   //     if (!spirits[id]) {
   //       throw new Error("Quote doesn't exist");
@@ -84,7 +91,7 @@ const resolvers = {
 
   //     return { ok };
   //   },
-  // },
+  },
 };
 
 const server = new ApolloServer({ typeDefs: schema, resolvers: resolvers });
