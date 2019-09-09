@@ -1,34 +1,12 @@
 // based on the tutorial found here:
 // https://developer.okta.com/blog/2019/05/29/build-crud-nodejs-graphql
 
+import schema from './types/schema.js';
+
 const { ApolloServer, gql } = require('apollo-server');
 const uuid = require('uuid/v4');
 
 const schema = gql`
-  enum SpiritType {
-    GIN
-    VODKA
-    RUM
-    LIQUOR
-    TEQUILA
-    BOURBON
-  }
-
-  type Spirit {
-    id: ID!
-    name: String!
-    type: SpiritType!
-  }
-
-  type Query {
-    spirits: [Spirit]
-  }
-
-  type Mutation {
-    addSpirit(name: String!, type: SpiritType!): Spirit
-    editSpirit(id: ID!, name: String!, type: SpiritType!): Spirit
-    deleteSpirit(id: ID!): DeleteResponse
-  }
 
   type DeleteResponse {
     ok: Boolean!
