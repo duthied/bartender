@@ -1,77 +1,63 @@
 // based on the tutorial found here:
 // https://developer.okta.com/blog/2019/05/29/build-crud-nodejs-graphql
 
-const { ApolloServer, gql } = require('apollo-server');
+import schema from './types/schema.js';
+
+const { ApolloServer } = require('apollo-server');
 const uuid = require('uuid/v4');
 
-// this _must_ be called 'typeDefs' or the call to instaniate the
-// ApolloServer errors out - wha?
-const typeDefs = gql`
-  type Quote {
-    id: ID!
-    phrase: String!
-    quotee: String
-  }
+// const schema = gql`
 
-  type Query {
-    quotes: [Quote]
-  }
+//   type DeleteResponse {
+//     ok: Boolean!
+//   }
+    
+// `;
 
-  type Mutation {
-    addQuote(phrase: String!, quotee: String): Quote
-    editQuote(id: ID!, phrase: String, quotee: String): Quote
-    deleteQuote(id: ID!): DeleteResponse
-  }
+const spirits = {};
 
-  type DeleteResponse {
-    ok: Boolean!
-  }
-`;
-
-const quotes = {};
-const addQuote = quote => {
+// TODO: add unique name check
+const addSpirit = spirit => {
   const id = uuid();
-  return quotes[id] = { ...quote, id };
+  return spirits[id] = { ...spirit, id };
 }
-// const deleteQuote
-// const editQuote
 
-// initial quotes
-addQuote({ phrase: "I'm a leaf on the wind.  Watch how I soar", quotee: "Wash"});
-addQuote({ phrase: "We're all stories in the end.", quotee: "The Doctor"});
-addQuote({ phrase: "Woah!", quotee: "Neo"});
+// initial spirits
+addSpirit({ name: "Hendrik's Gin", type: "GIN" });
+addSpirit({ name: "Havana Club", type: "RUM" });
+addSpirit({ name: "Woodford Reserve", type: "BOURBON" });
 
 const resolvers = {
   Query: {
-    quotes: () => Object.values(quotes),
+    spirits: () => Object.values(spirits),
   },
   Mutation: {
-    addQuote: async (parent, quote) => {
-      return addQuote(quote);
+    addSpirit: async (parent, spirit) => {
+      return addSpirit(spirit);
     },
-    editQuote: async (parent, { id, ...quote }) => {
-      if (!quotes[id]) {
-        throw new Error("Quote doesn't exist");
+    editSpirit: async (parent, { id, ...spirit }) => {
+      if (!spirits[id]) {
+        throw new Error("Spirit doesn't exist");
       }
       // I don't understand why I can't just
-      // edit the quote at the index 'id'?
-      quotes[id] = {
-        ...quotes[id],
-        ...quote,
+      // edit the spirit at the index 'id'?
+      spirits[id] = {
+        ...spirits[id],
+        ...spirit,
       };
 
-      return quotes[id];
+      return spirits[id];
     },
-    deleteQuote: async (parent, { id }) => {
-      const ok = Boolean(quotes[id]);
-      delete quotes[id];
+    deleteSpirit: async (parent, { id }) => {
+      const ok = Boolean(spirits[id]);
+      delete spirits[id];
 
       return { ok };
     },
   },
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs: schema, resolvers: resolvers });
 
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);    // eslint-disable-line no-console
