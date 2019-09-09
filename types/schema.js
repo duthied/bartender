@@ -1,7 +1,8 @@
 // import spirit from './spirits';
 const { gql } = require('apollo-server');
 
-import { typeDef as Spirit } from './spirits';
+import { typeDef as Spirit } from './spirit';
+import { typeDef as Recipe } from './recipe';
 
 const all = gql`
   """
@@ -9,6 +10,7 @@ const all = gql`
   """
   type Query {
     spirits: [Spirit]
+    recipes: [Recipe]
   }
 
   """
@@ -26,6 +28,7 @@ const all = gql`
 `;
 
 const schema = [Spirit]
+  .concat(Recipe)
   .concat(all)
 
 export default schema
