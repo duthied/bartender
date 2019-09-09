@@ -1,7 +1,10 @@
-# GraphQL CRUD example/tutorial 
-based on https://developer.okta.com/blog/2019/05/29/build-crud-nodejs-graphql
+# Bartender - GraphQL API (and soon a React front-end)
 
-## Requirements:
+Something to muck around with to learn GQL, etc.  
+
+The Bartender will be a 'spirit' tracking system coupled with a cocktail recipe management system.  Add what you have in your liquor cabinet, add recipes, get random recipes based on what you have in the bar.
+
+## Requirements (will increase as functionality and robustness is fleshed out):
 - node
 
 ## Usage:
