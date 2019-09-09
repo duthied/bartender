@@ -15,8 +15,8 @@ const all = gql`
   Mutations
   """
   type Mutation {
-    addSpirit(name: String!, type: SpiritType!): Spirit
-    editSpirit(id: ID!, name: String!, type: SpiritType!): Spirit
+    addSpirit(name: String!, type: SpiritType!, howMuchLeft: String = "0"): Spirit
+    editSpirit(id: ID!, name: String!, type: SpiritType!, howMuchLeft: String = "0"): Spirit
     deleteSpirit(id: ID!): DeleteResponse
   }
 
