@@ -1,4 +1,9 @@
-export const typeDef = `
+const { gql } = require('apollo-server');
+
+export const typeDef = gql`
+  """
+  Yer boozes
+  """
   enum SpiritType {
     GIN
     VODKA

@@ -1,6 +1,7 @@
-import spirit from './spirits';
+// import spirit from './spirits';
+const { gql } = require('apollo-server');
 
-import { typeDef as Spirit } from './types/spirits';
+import { typeDef as Spirit } from './spirits';
 
 const all = gql`
   """
@@ -24,7 +25,7 @@ const all = gql`
   }
 `;
 
-const schema = spirit
+const schema = [Spirit]
   .concat(all)
 
 export default schema

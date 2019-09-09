@@ -3,16 +3,16 @@
 
 import schema from './types/schema.js';
 
-const { ApolloServer, gql } = require('apollo-server');
+const { ApolloServer } = require('apollo-server');
 const uuid = require('uuid/v4');
 
-const schema = gql`
+// const schema = gql`
 
-  type DeleteResponse {
-    ok: Boolean!
-  }
+//   type DeleteResponse {
+//     ok: Boolean!
+//   }
     
-`;
+// `;
 
 const spirits = {};
 
