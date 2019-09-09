@@ -6,14 +6,6 @@ import schema from './types/schema.js';
 const { ApolloServer } = require('apollo-server');
 const uuid = require('uuid/v4');
 
-// const schema = gql`
-
-//   type DeleteResponse {
-//     ok: Boolean!
-//   }
-    
-// `;
-
 const spirits = {};
 
 // TODO: add unique name check
@@ -23,8 +15,8 @@ const addSpirit = spirit => {
 }
 
 // initial spirits
-addSpirit({ name: "Hendrik's Gin", type: "GIN" });
-addSpirit({ name: "Havana Club", type: "RUM" });
+addSpirit({ name: "Hendrik's Gin", type: "GIN", howMuchLeft: "50" });
+addSpirit({ name: "Havana Club", type: "RUM",howMuchLeft: "25" });
 addSpirit({ name: "Woodford Reserve", type: "BOURBON" });
 
 const resolvers = {

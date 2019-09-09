@@ -17,5 +17,6 @@ export const typeDef = gql`
     id: ID!
     name: String!
     type: SpiritType!
+    howMuchLeft: String
   }
 `;
