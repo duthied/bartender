@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node index.js",
-    "test": "eslint ."
+    "test": "eslint .",
+    "test:coverage": "jest --coverage"
   },
+  "test": "jest",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -16,6 +18,8 @@
     "@babel/node": "^7.6.1",
     "@babel/preset-env": "^7.6.0",
     "eslint": "^5.16.0",
+    "graphql-tester": "^0.0.5",
+    "jest": "^24.9.0",
     "nodemon": "^1.19.2"
   },
   "dependencies": {
