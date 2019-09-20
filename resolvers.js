@@ -1,7 +1,8 @@
+import uuid from 'uuid/v4';
 
 const spirits = {};
 const recipes = {};
-const uuid = require('uuid/v4');
+// const uuid = require('uuid/v4');
 
 // TODO: add unique name check
 const addSpirit = spirit => {
