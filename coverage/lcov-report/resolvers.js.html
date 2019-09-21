@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>7/14</span>
+        <span class='fraction'>14/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/4</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">66.67% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/6</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>7/14</span>
+        <span class='fraction'>14/14</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -88,7 +88,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -103,22 +103,22 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,23 +140,23 @@ module.exports = {
       addSpirit: async (parent, spirit) =&gt; {
         return addSpirit(spirit);
       },
-      editSpirit: <span class="fstat-no" title="function not covered" >as</span>ync (parent, { id, ...spirit }) =&gt; {
-<span class="cstat-no" title="statement not covered" >        if (!spirits[id]) {</span>
-<span class="cstat-no" title="statement not covered" >          throw new Error("Spirit doesn't exist");</span>
+      editSpirit: async (parent, { id, ...spirit }) =&gt; {
+        if (!spirits[id]) {
+          throw new Error("Spirit doesn't exist");
         }
         
-<span class="cstat-no" title="statement not covered" >        spirits[id] = {</span>
+        spirits[id] = {
           ...spirits[id],
           ...spirit,
         };
   
-<span class="cstat-no" title="statement not covered" >        return spirits[id];</span>
+        return spirits[id];
       },
-      deleteSpirit: <span class="fstat-no" title="function not covered" >as</span>ync (parent, { id }) =&gt; {
-        const ok = <span class="cstat-no" title="statement not covered" >Boolean(spirits[id]);</span>
-<span class="cstat-no" title="statement not covered" >        delete spirits[id];</span>
+      deleteSpirit: async (parent, { id }) =&gt; {
+        const ok = Boolean(spirits[id]);
+        delete spirits[id];
   
-<span class="cstat-no" title="statement not covered" >        return { ok };</span>
+        return { ok };
       },
     },
   };
@@ -166,7 +166,7 @@ module.exports = {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Sep 20 2019 22:10:54 GMT-0400 (Eastern Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Sep 20 2019 23:11:56 GMT-0400 (Eastern Daylight Time)
 </div>
 </div>
 <script src="prettify.js"></script>
