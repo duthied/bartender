@@ -5,11 +5,12 @@ import { async } from '../../../../Library/Caches/typescript/3.6/node_modules/rx
 
 describe('Recipes', () => {
 
+  const recipeCount = 1;
+
   it('returns a list of recipes', async () => {
     const res = await resolvers.Query.recipes();
     // currently the resolvers add 1 recipe
-    expect(res.length).toEqual(1);
-
+    expect(res.length).toEqual(recipeCount);
   });
 
 });

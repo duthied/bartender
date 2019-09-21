@@ -10,6 +10,7 @@ const all = gql`
   """
   type Query {
     spirits: [Spirit]
+    spirit(id: ID!): Spirit
     recipes: [Recipe]
   }
 
