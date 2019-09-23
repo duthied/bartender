@@ -9,8 +9,7 @@
     "test:coverage": "jest --coverage",
     "test": "jest",
     "prettier:check": "prettier --check \"*.js\"",
-    "prettier:write": "prettier --write \"*.js\"",
-    "precommit": "lint-staged && yarn test"
+    "prettier:write": "prettier --write \"*.js\""
   },
   "keywords": [],
   "author": "",
@@ -37,8 +36,14 @@
   },
   "lint-staged": {
     "*.js": [
-        "yarn run pretty",
-        "git add"
+      "yarn run pretty",
+      "git add"
     ]
-}
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && yarn test",
+      "pre-push": "yarn lint && yarn test && yarn prettier:check"
+    }
+  }
 }
