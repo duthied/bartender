@@ -2,10 +2,17 @@
     "extends": "eslint:recommended",
     "parserOptions": {
       "ecmaVersion": 2018,
-      "sourceType": "module",
+      "sourceType": "module"
     },
     "env": {
       "es6": true,
+      "jest": true,
       "node": true
-    }
+    },
+    "overrides": [
+      {
+        "files": "**/*.test.js",
+        "plugins": ["jest"]
+      }
+    ]
   }
