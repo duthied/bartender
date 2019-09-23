@@ -35,13 +35,6 @@
   "jest": {
     "verbose": true
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn test",
-      "pre-push": "yarn test",
-      "...": "..."
-    }
-  },
   "lint-staged": {
     "*.js": [
         "yarn run pretty",
