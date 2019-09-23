@@ -6,15 +6,13 @@
     },
     "env": {
       "es6": true,
+      "jest": true,
       "node": true
     },
     "overrides": [
       {
-        "files": "**/*.test.ts",
-        "plugins": ["jest"],
-        "env": {
-          "jest/globals": true
-        }
+        "files": "**/*.test.js",
+        "plugins": ["jest"]
       }
     ]
   }

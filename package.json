@@ -20,6 +20,7 @@
     "@babel/node": "^7.6.1",
     "@babel/preset-env": "^7.6.0",
     "eslint": "^5.16.0",
+    "eslint-plugin-jest": "^22.17.0",
     "husky": "^3.0.5",
     "jest": "^24.9.0",
     "lint-staged": "^9.3.0",
@@ -36,7 +37,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "yarn run pretty",
+      "yarn run prettier:write",
       "git add"
     ]
   },
