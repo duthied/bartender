@@ -17,4 +17,3 @@ npm start
 ```
 
 Load http://localhost:4000/ in a browser and the resulting playground will allow you to interact with the graph
-# bartender-client
