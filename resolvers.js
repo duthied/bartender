@@ -9,7 +9,13 @@ module.exports = {
       }
       return spirits[id];
     },
-    recipes: () => Object.values(recipes)
+    recipes: () => Object.values(recipes),
+    recipe: async (_, { id }) => {
+      if (!recipes[id]) {
+        throw new Error("Recipe doesn't exist");
+      }
+      return recipes[id];
+    }
   },
 
   Mutation: {
