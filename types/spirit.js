@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server');
+const { gql } = require("apollo-server");
 
 export const typeDef = gql`
   enum SpiritType {
@@ -8,6 +8,7 @@ export const typeDef = gql`
     LIQUOR
     TEQUILA
     BOURBON
+    RYE
   }
 
   type Spirit {
